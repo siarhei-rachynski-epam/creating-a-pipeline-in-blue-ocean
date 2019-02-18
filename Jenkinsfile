@@ -7,15 +7,20 @@ pipeline {
 
   }
   stages {
+    stage('Clean-up') {
+      steps {
+        sh 'ls -l'
+        sh 'sudo rm -rf ./*'
+      }
+    }
     stage('Build') {
       steps {
-        sh 'npm install --prefix $HOME'
+        sh 'npm install'
       }
     }
     stage('Test') {
       environment {
         CI = 'true'
-        NODE_PATH = '$HOME'
       }
       steps {
         sh './jenkins/scripts/test.sh'
