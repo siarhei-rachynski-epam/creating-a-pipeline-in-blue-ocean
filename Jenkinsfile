@@ -20,5 +20,12 @@ pipeline {
         sh './jenkins/scripts/test.sh'
       }
     }
+    stage('Deliver') {
+      steps {
+        sh './jenkins/scripts/deliver.sh'
+        input 'OK to promote to Production. Proceed?'
+        sh './jenkins/scripts/kill.sh'
+      }
+    }
   }
 }
