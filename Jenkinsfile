@@ -7,12 +7,6 @@ pipeline {
 
   }
   stages {
-    stage('Clean-up') {
-      steps {
-        sh 'ls -l'
-        sh 'sudo rm -rf ./*'
-      }
-    }
     stage('Build') {
       steps {
         sh 'npm install'
