@@ -9,7 +9,7 @@ pipeline {
     }
   }
   stages {
-    stage('clean_workspace_and_checkout_source') {
+    stage('Clean-up-and-Check-out') {
       steps {
         deleteDir()
         checkout scm
