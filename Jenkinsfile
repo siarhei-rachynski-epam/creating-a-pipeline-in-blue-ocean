@@ -9,12 +9,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+        sh 'npm install --prefix $HOME'
       }
     }
     stage('Test') {
       environment {
         CI = 'true'
+        NODE_PATH = '$HOME'
       }
       steps {
         sh './jenkins/scripts/test.sh'
